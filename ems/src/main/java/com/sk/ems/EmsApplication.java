@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(value = "com.sk.ems.service")
 public class EmsApplication {
 	private static final Logger LOGGER= LoggerFactory.getLogger(EmsApplication.class);
 	public static void main(String[] args) {
