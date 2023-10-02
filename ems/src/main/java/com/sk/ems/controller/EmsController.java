@@ -25,16 +25,14 @@ public class EmsController {
     public ResponseEntity<?> addData(@RequestBody String requestSData) {
         LOGGER.info("starting addData() in EmsController with the requestSData ::" + requestSData);
         String saveStatus;
-        if (requestSData != null && !requestSData.trim().isBlank()) {
+        if (requestSData != null && !requestSData.trim().isBlank())
             saveStatus = emsService.addData();
-        } else {
+        else
             return ResponseEntity.badRequest().body(GlobalConstant.BAD_REQUEST);
-        }
         if (saveStatus.equals(GlobalConstant.SUCCESS_STRING)) {
             LOGGER.info("Ending addData() in EmsController with the Response ::" + saveStatus);
             return ResponseEntity.status(HttpStatus.ACCEPTED).body(saveStatus);
         }
-        LOGGER.error("Ending addData() in EmsController with ::" + GlobalConstant.INTERNAL_SERVER_ERROR);
         return ResponseEntity.internalServerError().body(GlobalConstant.INTERNAL_SERVER_ERROR);
     }
 }
