@@ -28,11 +28,11 @@ public class EmsController {
         if (requestSData != null && !requestSData.trim().isBlank())
             saveStatus = emsService.addData();
         else
-            return ResponseEntity.badRequest().body(GlobalConstant.BAD_REQUEST);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(GlobalConstant.BAD_REQUEST);
         if (saveStatus.equals(GlobalConstant.SUCCESS_STRING)) {
             LOGGER.info("Ending addData() in EmsController with the Response ::" + saveStatus);
             return ResponseEntity.status(HttpStatus.ACCEPTED).body(saveStatus);
         }
-        return ResponseEntity.internalServerError().body(GlobalConstant.INTERNAL_SERVER_ERROR);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(GlobalConstant.INTERNAL_SERVER_ERROR);
     }
 }
